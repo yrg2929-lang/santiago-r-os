@@ -249,70 +249,104 @@
     color: var(--black);
   }
 
-  .portfolio-card {
-    border: 1px solid var(--light-gray);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  .portfolio-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    margin-bottom: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   @media (max-width: 768px) {
-    .portfolio-card { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
   }
-  .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.08); }
+
+  .portfolio-card {
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.1); }
 
   .portfolio-preview {
-    background: linear-gradient(135deg, #1a1209 0%, #3b2410 50%, #1a1209 100%);
-    height: 280px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
   }
-  .portfolio-preview::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.2) 0%, transparent 60%);
-  }
   .portfolio-preview-text {
     font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    color: #c9a84c;
+    font-size: 1.8rem;
     letter-spacing: -0.02em;
     position: relative;
     z-index: 2;
+    text-align: center;
+    padding: 0 1rem;
   }
 
-  .portfolio-info { padding: 2rem; background: var(--off-white); }
+  .preview-autos {
+    background: #0d1117;
+  }
+  .preview-autos .portfolio-preview-text { color: #e05c2a; }
+
+  .preview-hacienda {
+    background: #1a1209;
+  }
+  .preview-hacienda .portfolio-preview-text { color: #c9a84c; }
+
+  .preview-restaurante {
+    background: #0e1a10;
+  }
+  .preview-restaurante .portfolio-preview-text { color: #52b788; }
+
+  .preview-inmobiliaria {
+    background: #0f1520;
+  }
+  .preview-inmobiliaria .portfolio-preview-text { color: #6aabf7; }
+
+  .portfolio-info { padding: 1.5rem; background: var(--off-white); flex: 1; display: flex; flex-direction: column; }
+  .portfolio-industry {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 0.7rem;
+    width: fit-content;
+  }
+  .ind-autos { background: #fff0eb; color: #c0471a; }
+  .ind-hacienda { background: #fdf5e0; color: #8a6820; }
+  .ind-restaurante { background: #edf7f1; color: #1e6641; }
+  .ind-inmobiliaria { background: #e8f1fc; color: #1a4e8a; }
+
   .portfolio-tag {
     font-size: 0.68rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--green);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
   }
   .portfolio-name {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--black);
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
   }
-  .portfolio-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+  .portfolio-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.6; flex: 1; }
   .portfolio-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.2rem;
-    font-size: 0.78rem;
+    margin-top: 1.1rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -321,6 +355,7 @@
     border-bottom: 1px solid var(--black);
     padding-bottom: 2px;
     transition: color 0.3s, border-color 0.3s;
+    width: fit-content;
   }
   .portfolio-link:hover { color: var(--green); border-color: var(--green); }
 
@@ -517,28 +552,61 @@
       <h2 class="section-title">Lo que<br>he creado.</h2>
     </div>
   </div>
-  <a class="portfolio-card reveal" href="https://v0-autopartes-de-leon-landing-page.vercel.app/" target="_blank">
-    <div class="portfolio-preview">
-      <span class="portfolio-preview-text">Autopartes De León</span>
-    </div>
-    <div class="portfolio-info">
-      <p class="portfolio-tag">Refaccionaria · Mayorista · León, Gto.</p>
-      <h3 class="portfolio-name">Autopartes De León S.A.</h3>
-      <p class="portfolio-desc">Página web elaborada, con propuestas de reserva que llegan directamente a WhatsApp o Gmail — cuenta con detalles integrados para una experiencia completa. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
-      <span class="portfolio-link">Ver proyecto →</span>
-    </div>
-  </a>
-  <a class="portfolio-card reveal" href="https://v0-salon-la-haciendita.vercel.app/" target="_blank">
-    <div class="portfolio-preview">
-      <span class="portfolio-preview-text">Salón La Haciendita</span>
-    </div>
-    <div class="portfolio-info">
-      <p class="portfolio-tag">Salón de eventos · Bodas & XV años · León, Gto.</p>
-      <h3 class="portfolio-name">La Haciendita — Salón de Eventos</h3>
-      <p class="portfolio-desc">Página web demostrativa, con toda la información de contacto. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
-      <span class="portfolio-link">Ver proyecto →</span>
-    </div>
-  </a>
+  <div class="portfolio-grid">
+
+    <a class="portfolio-card reveal" href="https://v0-autopartes-de-leon-landing-page.vercel.app/" target="_blank">
+      <div class="portfolio-preview preview-autos">
+        <span class="portfolio-preview-text">Autopartes De León</span>
+      </div>
+      <div class="portfolio-info">
+        <span class="portfolio-industry ind-autos">Autos & Refacciones</span>
+        <p class="portfolio-tag">Refaccionaria · Mayorista · León, Gto.</p>
+        <h3 class="portfolio-name">Autopartes De León S.A.</h3>
+        <p class="portfolio-desc">Página web elaborada, con propuestas de reserva que llegan directamente a WhatsApp o Gmail — cuenta con detalles integrados para una experiencia completa. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
+        <span class="portfolio-link">Ver proyecto →</span>
+      </div>
+    </a>
+
+    <a class="portfolio-card reveal" href="https://v0-salon-la-haciendita.vercel.app/" target="_blank">
+      <div class="portfolio-preview preview-hacienda">
+        <span class="portfolio-preview-text">Salón La Haciendita</span>
+      </div>
+      <div class="portfolio-info">
+        <span class="portfolio-industry ind-hacienda">Haciendas & Salones</span>
+        <p class="portfolio-tag">Salón de eventos · Bodas & XV años · León, Gto.</p>
+        <h3 class="portfolio-name">La Haciendita — Salón de Eventos</h3>
+        <p class="portfolio-desc">Página web demostrativa, con toda la información de contacto. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
+        <span class="portfolio-link">Ver proyecto →</span>
+      </div>
+    </a>
+
+    <a class="portfolio-card reveal" href="https://mamalinda-buffet.preview.emergentagent.com/" target="_blank">
+      <div class="portfolio-preview preview-restaurante">
+        <span class="portfolio-preview-text">Mamá Linda Buffet</span>
+      </div>
+      <div class="portfolio-info">
+        <span class="portfolio-industry ind-restaurante">Restaurantes & Buffets</span>
+        <p class="portfolio-tag">Restaurante · Buffet · León, Gto.</p>
+        <h3 class="portfolio-name">Mamá Linda Buffet</h3>
+        <p class="portfolio-desc">Página web demostrativa, con toda la información de contacto. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
+        <span class="portfolio-link">Ver proyecto →</span>
+      </div>
+    </a>
+
+    <a class="portfolio-card reveal" href="https://casas-guanajuato.preview.emergentagent.com/" target="_blank">
+      <div class="portfolio-preview preview-inmobiliaria">
+        <span class="portfolio-preview-text">Casas Guanajuato</span>
+      </div>
+      <div class="portfolio-info">
+        <span class="portfolio-industry ind-inmobiliaria">Inmobiliarias</span>
+        <p class="portfolio-tag">Bienes raíces · Propiedades · Guanajuato</p>
+        <h3 class="portfolio-name">Casas Guanajuato</h3>
+        <p class="portfolio-desc">Página web demostrativa, con toda la información de contacto. <em style="color:var(--green);font-style:normal;font-weight:500">¿Imaginas lo que puedo hacer con tu negocio?</em></p>
+        <span class="portfolio-link">Ver proyecto →</span>
+      </div>
+    </a>
+
+  </div>
 </section>
 
 <section class="process" id="proceso">
